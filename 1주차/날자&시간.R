@@ -1,0 +1,18 @@
+Sys.Date() #[1] "2024-09-03"
+Sys.time()  #[1] "2024-09-03 11:04:31 KST"
+as.Date('2019-11-01') #[1] "2019-11-01"
+as.Date("2014/11/01") #[1] "2014-11-01"
+
+as.Date("01-11-2018") #[1] "0001-11-20"
+as.Date("01-11-2018", format="%d-%m-%Y") #[1] "20218-11-01"
+
+as.Date("2014년 11월 1일",format="%Y년 %m월 %d일") #[1] "20214-11-01"
+as.Date("01112014",format="%d%m%Y") #[1] "2014-11-01"
+as.Date("011114",format="%d%m%y") #[1] "2014-11-01"
+
+a<-as.Date("01-11-2014",format="%d-%m-%Y") 
+b<-as.Date("01-11-2018",format="%d-%m-%Y")
+b-a #Time difference of 1461 days
+
+strDates <- as.character(Sys.Date())
+strDates  #[1] "2024-09-03"
