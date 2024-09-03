@@ -16,3 +16,10 @@ b-a #Time difference of 1461 days
 
 strDates <- as.character(Sys.Date())
 strDates  #[1] "2024-09-03"
+
+#%d 일자를 숫자로 인식합니다.
+#%m 월 을 숫자로 인식합니다.
+#%b 월 을 영어 약어로 인식합니다.
+#%B 월 을 전체 이름으로 인식합니다.
+#%y 년도를 숫자 두 자리로 인식합니다.
+#%Y 년도를 숫자 네 자리로 인식합니다
