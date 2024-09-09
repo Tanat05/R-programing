@@ -41,6 +41,9 @@ seq1
 #[1] 1 2 3 4 5
 seq2 <- "a":"f"
 #error
+date2 <- seq(from=as.Date('2014-01-01'),to=as.Date('2014-05-31'),by='2 month') 
+date2
+#[1] "2014-01-01" "2014-03-01" "2014-05-01"
 
 date1 <- seq(from=as.Date('2014-01-01'),to=as.Date('2014-01-31'),by=1)
 date1
