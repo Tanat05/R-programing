@@ -42,3 +42,5 @@ error
 var1 #[1] 1 2 3
 length(var1) #[1] 3
 NROW(var1) #[1] 3
+#length() 백터의 요소 갯수
+#length() = NROW()
