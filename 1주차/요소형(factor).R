@@ -1,3 +1,6 @@
+#요소형(factor): 값의 중복되지 않은 유일한 값의 수준(level)이 정해져 있는 자료형
+
+
 setwd("c:/r_temp")
 txt1 <- read.csv("factor_test_utf8.txt")
 txt1
