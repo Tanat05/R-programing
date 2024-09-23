@@ -62,6 +62,9 @@ list1$pay2
 #1,2
 list1$pay2 <- array(c(matrix(c(1,2,3,4),2,2, byrow=T), matrix(c(4,5,1,2),2,2, byrow=T)), dim=c(2,2,2))
 list1$pay2
+#또는
+list1$pay2 <- array(c(1,3,2,4,4,1,5,2), dim=c(2,2,2))
+list1$pay2
 #, , 1
 #
 #     [,1] [,2]
