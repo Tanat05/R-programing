@@ -151,7 +151,7 @@ df4
 
 #데이터프레임 합치기
 df1
-    NAME QTY
+#    NAME QTY
 #1  apple 300
 #2  banna 200
 #3 cherry 100
