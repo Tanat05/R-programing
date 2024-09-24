@@ -198,6 +198,9 @@ df1
 new <- data.frame(NAME=c('apple','banana','cherry','mango','berry'), QTY=c(10,20,30,40,50))
 df1 <- merge(df1,new)
 df1
+#또는
+df1 <- cbind(df1, c(10,20,30,40,50))
+df1
 #    NAME PRICE QTY
 #1  apple   300  10
 #2 banana   200  20
