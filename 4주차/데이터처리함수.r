@@ -79,6 +79,7 @@ aggregate(mpg~cyl+am, subset(mtcars, cyl==4), mean)
 #1   4  0 22.900
 #2   4  1 28.075
 
+
 #apply
 mat1 <- matrix(c(1,2,3,4,5,6), nrow=2, byrow=T)
 mat1
