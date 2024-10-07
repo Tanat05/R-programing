@@ -60,7 +60,7 @@ aggregate(승차~노선번호, data3, sum)
 data4 <- read.csv('1-4호선승하차승객수.csv', fileEncoding = "EUC-KR")
 data4
 #4-1
-apply(data4["승차"], 1, sum)
+#apply(data4["승차"], 1, sum) 수정 중
 #4-2
 apply(data4[c("승차", "하차")], 2, sum)
 
