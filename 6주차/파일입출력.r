@@ -1,8 +1,7 @@
-#경로 설정
 setwd("c:/rtemp")
 read.table(file, header = False, sep = " ")
 
-#파일 입출력
+
 fruits <- read.table('fruits.txt')
 fruits
 
@@ -36,11 +35,10 @@ read.csv("학생별전체성적.txt", colClasses=c("character", "integer", "inte
 #1
 read.csv("학생별전체성적.txt", colClasses =c ("character", "NULL", "NULL", "NULL", "NULL", "NULL", "integer"), fileEncoding = "EUC-KR")
 
-#엑셀 데이터 읽기
+
 install.packages("xlsx")
 require(xlsx)
 read.xlsx("fruits_6.xls", sheetName="Sheet1")
-
 
 #연습문제
 #1
@@ -57,3 +55,25 @@ apply(data2[,-1], 1, max)
 data3 <- read.csv('1-4호선승하차승객수.csv', fileEncoding = "EUC-KR")
 data3
 aggregate(승차~노선번호, data3, sum)
+
+#4
+data4 <- read.csv('1-4호선승하차승객수.csv', fileEncoding = "EUC-KR")
+data4
+#4-1
+apply(data4["승차"], 1, sum)
+#4-2
+apply(data4[c("승차", "하차")], 2, sum)
+
+#5
+data5 <- read.csv('1-4호선승하차승객수.csv', fileEncoding = "EUC-KR")
+data5
+aggregate(승차+하차~노선번호, data5, sum)
+
+#파일 저장
+data <- read.csv('1-4호선승하차승객수.csv', fileEncoding = "EUC-KR")
+result <- aggregate(승차+하차~노선번호, data, sum)
+result
+
+write.table(result, "result.txt")
+write.table(result, "result3.txt", quote=FALSE)
+write.csv(result, "result2.csv", fileEncoding = "EUC-KR")
