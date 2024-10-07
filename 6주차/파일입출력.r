@@ -35,17 +35,23 @@ read.csv("학생별전체성적.txt", colClasses=c("character", "integer", "inte
 #1
 read.csv("학생별전체성적.txt", colClasses =c ("character", "NULL", "NULL", "NULL", "NULL", "NULL", "integer"), fileEncoding = "EUC-KR")
 
-#2
+
+install.packages("xlsx")
+require(xlsx)
+read.xlsx("fruits_6.xls", sheetName="Sheet1")
+
+#연습문제
+#1
 data1 <- read.csv("2000-2013년 연령별실업율_연령별평균.csv", fileEncoding = "EUC-KR")
 data1
 apply(data1[,-1], 2, mean)
 
-#3
+#2
 data2 <- read.csv("2000-2013년 연령별실업율_연령별평균.csv", fileEncoding = "EUC-KR")
 data2
 apply(data2[,-1], 1, max)
 
-#4
+#3
 data3 <- read.csv('1-4호선승하차승객수.csv', fileEncoding = "EUC-KR")
 data3
 aggregate(승차~노선번호, data3, sum)
