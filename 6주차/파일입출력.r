@@ -1,7 +1,8 @@
+#경로 설정
 setwd("c:/rtemp")
 read.table(file, header = False, sep = " ")
 
-
+#파일 입출력
 fruits <- read.table('fruits.txt')
 fruits
 
@@ -35,10 +36,11 @@ read.csv("학생별전체성적.txt", colClasses=c("character", "integer", "inte
 #1
 read.csv("학생별전체성적.txt", colClasses =c ("character", "NULL", "NULL", "NULL", "NULL", "NULL", "integer"), fileEncoding = "EUC-KR")
 
-
+#엑셀 데이터 읽기
 install.packages("xlsx")
 require(xlsx)
 read.xlsx("fruits_6.xls", sheetName="Sheet1")
+
 
 #연습문제
 #1
