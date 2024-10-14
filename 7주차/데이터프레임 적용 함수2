@@ -1,0 +1,32 @@
+#상관함수
+a <- c(1, 2, 3, 4, 5)
+b <- c(2, 4, 6, 8, 10)
+cor(a, b)
+a
+cumsum(a)
+cumprod(a)
+c <- c(1, 6, 2, 4, 8)
+order(c)
+sort(c)
+prod(a) #각 요소 곱하기
+a
+
+v <- c(1, 2, 3, 4, 5)
+v
+range(v)
+rank(v)
+rev(v)
+sd(v)
+sum(v)
+summary(v)
+
+install.packages("googleVis")
+library(googleVis)
+Fruits
+
+#연습문제
+sum(Fruits$Sales)
+
+dif <- diff(Fruits$Sales)
+dif <- append(dif, 0, after=0)
+cbind(Fruits, dif)
