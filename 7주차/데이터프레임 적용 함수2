@@ -120,3 +120,21 @@ sum(Fruits$Sales)
 dif <- diff(Fruits$Sales)
 dif <- append(dif, 0, after=0)
 cbind(Fruits, dif)
+
+
+subset(Fruits, Fruit=="Apples")
+subset(Fruits, Fruit!="Apples")
+
+Fruits[, 4]
+class(Fruits[, 4])
+Fruits[, 4, drop=FALSE]
+class(Fruits[, 1, drop=FALSE])
+
+aggregate(Sales~Year, Fruits, sum)
+aggregate(Sales~Fruit, Fruits, sum)
+aggregate(Sales~Fruit, Fruits, max)
+aggregate(Sales~Fruit+Year, Fruits, max)
+
+#연습문제
+aggregate(Sales~Location, Fruits, sum)
+aggregate(Profit~Fruit, Fruits, max)
