@@ -127,3 +127,9 @@ merge(math, english)
 
 
 #[빈칸 채우기)] 빈칸당(문제당 아님) 3점
+
+#작업폴더를 c:\temp로 설정하려고 한다.
+setwd("c:\temp")
+
+#아래의 fruits_long.csv 파일을 R로 불어오고자 한다.
+a <- read.csv(fruits_long.csv)
