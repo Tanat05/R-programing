@@ -12,14 +12,19 @@
 고칠 부분이 없음 Fruits와 Sales~Fruit는 위치를 서로 변경해도 문제가 없지만 max의 위치는 변경하면 안됨
 
 #Fruits 데이터에서 이익의 역순으로 (이익갑이 큰것부터 작은것까지) 데이터를 정렬
-#> Fruits$Profit[order(Fruits$Profit)]
-sort() 정렬, rev() 역순 order() 정렬했을때 위치값
+#> Fruits[order(Fruits$Profit)]
+rev() 역순 order() 정렬했을때 위치값
 Fruits$Profit Fruits에서 Profit만 가져오기 [1] 20 32 13 15
 order(c(20, 32, 13, 15)) 20은 정렬하면 3번째 이므로 3 이런식으로 나온다. [1] 3 4 1 2
-Fruits$Profit[c(3,4,1,2)] Profit을 3, 4, 1, 2 순서로 불러온다. [1] 13 15 20 32
+Fruits$Profit[c(3,4,1,2)] Profit을 3, 4, 1, 2 순서로 불러온다. [1] 13 15 20 32  Fruits$Profit가 아닌 Fruits로 하면 헤더값이 불러와지기 떄문에 이 부분이 틀림
 rev(c(13, 15, 20, 32)) 역순으로 변경한다. [1] 32 20 15 13
 이 과정을 하나의 코드로 작성하면 아래의 코드가 나옴
 rev(Fruits$Profit[order(Fruits$Profit)])
+또는 rev의 위치를 변경할 수 있다.
+Fruits$Profit[rev(order(Fruits$Profit))]
+
+sort() 정렬를 사용하면 아래와 같이 간단하게 변경도 가능
+rev(sort(Fruits$Profit))
 
 #날짜형 데이터가 아래와 같이 나오도록 포맷을 지정하였다.
 #> as.Date("12012019",  format=”%y%m%d” ) 
@@ -74,7 +79,7 @@ $Profit
 
 #내장 함수를 사용하여 baseball 데이터프레임에서 팀 별로 경기와 득점 합(변수별로 각각)을 각각 구하시오. 코드는 하나로 쓸것 (두개쓰면 틀림)
 aggregate(경기+득점~팀, baseball, sum)
-#또는
+또는
 aggregate(baseball, 경기+득점~팀, sum)
 
 #내장 함수를 사용하여 위의 baseball 데이터에서 경기 수가 120이상인 행만 추출하시오
@@ -171,5 +176,5 @@ subset(sales, name=="Apple")
 #data <- ________(____________(“2015-01-01”), __두번째 괄호와 같음___(“2015-01-31”)))
 seq() 반복데이터 as.Date() 날짜형 데이터로 변환
 data <- seq(from=as.Date("2015-01-01"), to=as.Date("2015-01-31"), by="day")
-#또는
+또는
 data <- seq(from=as.Date("2015-01-01"), to=as.Date("2015-01-31"), by=1)
