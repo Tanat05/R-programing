@@ -12,21 +12,25 @@
 고칠 부분이 없음 Fruits와 Sales~Fruit는 위치를 서로 변경해도 문제가 없지만 max의 위치는 변경하면 안됨
 
 #Fruits 데이터에서 이익의 역순으로 (이익갑이 큰것부터 작은것까지) 데이터를 정렬
-#> Fruits[ order(Fruits$Profit) ]
-sort() 정렬, rev() 역순 
-작성중...
+#> Fruits$Profit[order(Fruits$Profit)]
+sort() 정렬, rev() 역순 order() 정렬했을때 위치값
+Fruits$Profit Fruits에서 Profit만 가져오기 [1] 20 32 13 15
+order(c(20, 32, 13, 15)) 20은 정렬하면 3번째 이므로 3 이런식으로 나온다. [1] 3 4 1 2
+Fruits$Profit[c(3,4,1,2)] Profit을 3, 4, 1, 2 순서로 불러온다. [1] 13 15 20 32
+rev(c(13, 15, 20, 32)) 역순으로 변경한다. [1] 32 20 15 13
+이 과정을 하나의 코드로 작성하면 아래의 코드가 나옴
+rev(Fruits$Profit[order(Fruits$Profit)])
 
 #날짜형 데이터가 아래와 같이 나오도록 포맷을 지정하였다.
 #> as.Date("12012019",  format=”%y%m%d” ) 
 #[1] "2019-12-01"
 년월일 %Y%m%d, 4자리 년도는 대문자 Y로 사용 24년도 같은 2자리 년도는 소문자 y
 as.Date("12012019",  format="%d%m%Y")
+#[1] "2019-01-12"
 
 #Fruits데이터 프레임에서 Fruit, Locationa별로 Sales의 최대값을 구하고자 한다.
 #aggregate(Sales~cbind(Fruit, Location),Fruits, max)
 aggregate(Sales~Fruit+Location,Fruits, max)
-
-
 
 
 #[결과 작성하기] 3점, 콘솔창에 나오는 그대로 쓸것 ([1] 이런것 포함)
@@ -42,7 +46,7 @@ mat1에서 각 열(세로)의 합계, 2가 아니라 1이면 행(가로)의 합�
 
 #다음의 결과를 쓰시오.
 #>lapply(Fruits[4:6], max)
-Fruits의 4, 5, 6번 열의 최대값, $헤더 도 나오는 것을 주의
+Fruits의 4, 5, 6번 열의 최대값, $헤더 형태도 나오는 것을 주의
 $Sales
 [1] 111
 $Expenses
@@ -70,6 +74,8 @@ $Profit
 
 #내장 함수를 사용하여 baseball 데이터프레임에서 팀 별로 경기와 득점 합(변수별로 각각)을 각각 구하시오. 코드는 하나로 쓸것 (두개쓰면 틀림)
 aggregate(경기+득점~팀, baseball, sum)
+#또는
+aggregate(baseball, 경기+득점~팀, sum)
 
 #내장 함수를 사용하여 위의 baseball 데이터에서 경기 수가 120이상인 행만 추출하시오
 subset(baseball, 경기>=120)
@@ -108,6 +114,8 @@ data.frame(NO=no, NAME=name, PRICE=price, QTY=qty)
 
 #아래 콘솔창의 결과와 같이 년도별 평균 실업률 구하는 코드를 작성하시오.
 #다음의 테이블(데이터프레임명 : sample_data)
+sample_data[,-1] 첫번째 열(세로)만 제외
+apply(데이터, 2(2면 열(세로) 1이면 행(가로)), mean) 각 열의 평균
 apply(sample_data[,-1], 2, mean)
 
 #다음과 같이 연령별 평균 최대실업률을 구하는 코드를 작성하시오. 
@@ -133,7 +141,7 @@ merge(math, english)
 #var7
 #[1] 1 3 5 7 9
 #3 __________ var7
-작성중
+작성중...
 #[1] TRUE
 
 #작업폴더를 c:\temp로 설정하려고 한다.
