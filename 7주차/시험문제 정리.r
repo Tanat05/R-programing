@@ -42,7 +42,7 @@ mat1에서 각 열(세로)의 합계, 2가 아니라 1이면 행(가로)의 합�
 
 #다음의 결과를 쓰시오.
 #>lapply(Fruits[4:6], max)
-Fruits의 4, 5, 6번 열의 최대값
+Fruits의 4, 5, 6번 열의 최대값, $헤더 도 나오는 것을 주의
 $Sales
 [1] 111
 $Expenses
@@ -78,6 +78,7 @@ subset(baseball, 경기>=120)
 subset(baseball,포지션=="1루수")$선수명
 
 #위의 baseball 데이터에 득점이 60점 이상인지의 여부에 따라 80점 이상이면 good, 60점 이상이면 fair의 값을 , 60점 미만이면 bad를 가지는 type변수를 추가하시오. 
+함수?
 작성중...
 
 
@@ -119,6 +120,8 @@ apply(sample_data[,-1], 2, mean)
 #다음의 두 테이블을 ID를 기준으로 일치하는 행을 기준으로 두 테이블을 결합하는 코드를 작성하시오. 
 #결합 결과는 오른쪽 테이블임
 #2.png 참고 오른쪽 테이블은 3.png 참고
+merge()는 둘 다 존재하는 데이터만 합치고 all=T 옵션으로 모든 데이터를 보존하고 NA값을 추가한다.
+해당 문제에서는 NA값이 안보이기 떄문에 all=T 옵션을 사용할 필요가 없음
 merge(math, english)
 
 
@@ -135,6 +138,7 @@ merge(math, english)
 
 #작업폴더를 c:\temp로 설정하려고 한다.
 #setwd(_______________)
+문자형만 받으므로 ""로 문자형으로 넣을 것
 setwd("c:\temp")
 
 #아래의 fruits_long.csv 파일을 R로 불어오고자 한다.
@@ -144,7 +148,7 @@ a <- read.csv(fruits_long.csv)
 
 #sales(17번) 테이블에서 name 변수값이 Apple인 데이터만 추출하려고한다.
 #>_____________(sales,NAME_________”Apple”)
-#사진 상에서는 NAME이 아니라 name이 맞음
+사진 상에서는 NAME이 아니라 name이 맞음
 subset(sales, name=="Apple")
 
 #NA를 제외하고, x의 평균을 구하고자 한다..
@@ -157,7 +161,7 @@ subset(sales, name=="Apple")
 
 #Data라는 변수에 2015년 1월 1일부터 2015년 1월 31일까지 1씩 증가하는 날짜를 입력하는 방법을 쓰세요.
 #data <- ________(____________(“2015-01-01”), __두번째 괄호와 같음___(“2015-01-31”)))
-#seq
+seq() 반복데이터 as.Date() 날짜형 데이터로 변환
 data <- seq(from=as.Date("2015-01-01"), to=as.Date("2015-01-31"), by="day")
 #또는
 data <- seq(from=as.Date("2015-01-01"), to=as.Date("2015-01-31"), by=1)
