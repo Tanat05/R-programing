@@ -86,6 +86,7 @@ aggregate(baseball, 경기+득점~팀, sum)
 subset(baseball, 경기>=120)
 
 #baseball 데이터에서 포지션이 1루수인 선수들의 이름을 추출하는 코드를 작성하시오
+subset(baseball,포지션=="1루수")로 1루수인 데이터만 불러오고 $선수명으로 선수의 이름만 불러온다.
 subset(baseball,포지션=="1루수")$선수명
 
 #위의 baseball 데이터에 득점이 60점 이상인지의 여부에 따라 80점 이상이면 good, 60점 이상이면 fair의 값을 , 60점 미만이면 bad를 가지는 type변수를 추가하시오. 
@@ -146,6 +147,7 @@ merge(math, english)
 #var7
 #[1] 1 3 5 7 9
 #3 __________ var7
+해당 부분 배운적이 있나...? 파이썬이면 in...
 작성중...
 #[1] TRUE
 
