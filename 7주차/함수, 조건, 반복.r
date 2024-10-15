@@ -148,4 +148,17 @@ for2(100)
 
 my_ray4 <- c(1, 3, 5, 7 , 9, 12)
 colors <- c()
-for (i in 1:length(my_ray4))
+for (i in 1:length(my_ray4)){
+  if (my_ray4[i] >= 10) {
+    colors <- c(colors, "red")
+  }
+  else if (my_ray4[i] >= 6){
+    colors <- c(colors, "yellow")
+  }
+  else {
+    colors <- c(colors, "green")
+  }
+}
+
+#연습문제
+my_ray4 <- c(1, 3, 5, 7 , 9, 12);colors <- c();for (i in 1:length(my_ray4)){if (my_ray4[i] >= 10) {colors <- c(colors, "red")} else if (my_ray4[i] >= 6){colors <- c(colors, "yellow")}else {colors <- c(colors, "green")}}
