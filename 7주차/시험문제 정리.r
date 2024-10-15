@@ -10,7 +10,6 @@
 #Fruits 데이터에서 과일 종류별 최대 판매량(Sales)을 구하는 코드
 #>aggregate(Fruits, Sales~Fruit,  max)
 고칠 부분이 없음
-aggregate(Sales~Fruit, Fruits,  max)
 
 #Fruits 데이터에서 이익의 역순으로 (이익갑이 큰것부터 작은것까지) 데이터를 정렬
 #> Fruits[ order(Fruits$Profit) ]
@@ -70,14 +69,13 @@ $Profit
 #박용택	중견수	LG	125	476	79
 
 #내장 함수를 사용하여 baseball 데이터프레임에서 팀 별로 경기와 득점 합(변수별로 각각)을 각각 구하시오. 코드는 하나로 쓸것 (두개쓰면 틀림)
-#
 aggregate(경기+득점~팀, baseball, sum)
 
 #내장 함수를 사용하여 위의 baseball 데이터에서 경기 수가 120이상인 행만 추출하시오
 subset(baseball, 경기>=120)
 
 #baseball 데이터에서 포지션이 1루수인 선수들의 이름을 추출하는 코드를 작성하시오
-subset(baseball,포지션==”1루수”)$선수명
+subset(baseball,포지션=="1루수")$선수명
 
 #위의 baseball 데이터에 득점이 60점 이상인지의 여부에 따라 80점 이상이면 good, 60점 이상이면 fair의 값을 , 60점 미만이면 bad를 가지는 type변수를 추가하시오. 
 작성중...
@@ -128,8 +126,38 @@ merge(math, english)
 
 #[빈칸 채우기)] 빈칸당(문제당 아님) 3점
 
+#이 벡터 var7 안에 있는지를 테스트하는 코드이다.
+#var7
+#[1] 1 3 5 7 9
+#3 __________ var7
+작성중
+#[1] TRUE
+
 #작업폴더를 c:\temp로 설정하려고 한다.
+#setwd(_______________)
 setwd("c:\temp")
 
 #아래의 fruits_long.csv 파일을 R로 불어오고자 한다.
+#a<-___________________(fruits_long.csv)
 a <- read.csv(fruits_long.csv)
+#4.png 참고
+
+#sales(17번) 테이블에서 name 변수값이 Apple인 데이터만 추출하려고한다.
+#>_____________(sales,NAME_________”Apple”)
+#사진 상에서는 NAME이 아니라 name이 맞음
+subset(sales, name=="Apple")
+
+#NA를 제외하고, x의 평균을 구하고자 한다..
+#> x <- c(2,NA,4)
+#> mean(x)
+#[1] NA
+#> mean(x,   ____________ =TRUE)
+작성중...
+#[1] 3
+
+#Data라는 변수에 2015년 1월 1일부터 2015년 1월 31일까지 1씩 증가하는 날짜를 입력하는 방법을 쓰세요.
+#data <- ________(____________(“2015-01-01”), __두번째 괄호와 같음___(“2015-01-31”)))
+#seq
+data <- seq(from=as.Date("2015-01-01"), to=as.Date("2015-01-31"), by="day")
+#또는
+data <- seq(from=as.Date("2015-01-01"), to=as.Date("2015-01-31"), by=1)
