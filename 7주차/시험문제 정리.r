@@ -8,8 +8,8 @@
 #4	 Oranges 2008     East    96       81     15  2008-12-31       
 
 #Fruits 데이터에서 과일 종류별 최대 판매량(Sales)을 구하는 코드
-#>aggregate(Fruits, Sales~Fruit,  max)
-고칠 부분이 없음
+#>aggregate(Fruits, Sales~Fruit, max)
+고칠 부분이 없음 Fruits와 Sales~Fruit는 위치를 서로 변경해도 문제가 없지만 max의 위치는 변경하면 안됨
 
 #Fruits 데이터에서 이익의 역순으로 (이익갑이 큰것부터 작은것까지) 데이터를 정렬
 #> Fruits[ order(Fruits$Profit) ]
