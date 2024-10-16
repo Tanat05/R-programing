@@ -123,7 +123,7 @@ data.frame(NO=no, NAME=name, PRICE=price, QTY=qty)
 #아래 콘솔창의 결과와 같이 년도별 평균 실업률 구하는 코드를 작성하시오.
 #다음의 테이블(데이터프레임명 : sample_data)
 sample_data[,-1] 첫번째 열(세로)만 제외
-apply(데이터, 2(2면 열(세로) 1이면 행(가로)), mean) 각 열의 평균
+apply(데이터, 2, mean) 각 열의 평균, 2이면 열(세로) 1이면 행(가로)
 apply(sample_data[,-1], 2, mean)
 
 #다음과 같이 연령별 평균 최대실업률을 구하는 코드를 작성하시오. 
