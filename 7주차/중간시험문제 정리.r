@@ -1,3 +1,13 @@
+#OX) 각 2점
+#length() 함수는 데이터의 변수 수를 세는 함수이다.
+답: O
+#R에서 데이터 저장의 가장 작은 구조는 요소형이다.
+답: X
+#값의 수준이 몇 개로 한정되어 있는 데이터 타입을 팩터형이라고 한다.
+답: O
+#요소의 데이터 타입이 서로 다르고 2차원으로 구성된 데이터 구조를 데이터프레임이라고 한다.
+답: O
+
 #[틀린 부분 찾아 수정하기] 3점, 틀린 부분을 찾아 동그라미 치고, 정답을 작성하시오(코드 전체 다 쓸것)
 
 #>Fruits
@@ -11,33 +21,27 @@
 #>aggregate(Fruits, Sales~Fruit, max)
 고칠 부분이 없음
 Fruits와 Sales~Fruit는 위치를 서로 변경해도 문제가 없지만 max의 위치는 변경하면 안됨
-aggregate(Sales~Fruit, Fruits, max)
+답: aggregate(Sales~Fruit, Fruits, max)
+
+
 
 #Fruits 데이터에서 이익의 역순으로 (이익갑이 큰것부터 작은것까지) 데이터를 정렬
 #> Fruits[order(Fruits$Profit)]
 rev() 역순 order() 정렬했을때 위치값
-Fruits$Profit Fruits에서 Profit만 가져오기 [1] 20 32 13 15
-order(c(20, 32, 13, 15)) 20은 정렬하면 3번째 이므로 3 이런식으로 나온다. [1] 3 4 1 2
-Fruits$Profit[c(3,4,1,2)] Profit을 3, 4, 1, 2 순서로 불러온다. [1] 13 15 20 32  Fruits$Profit가 아닌 Fruits로 하면 헤더값이 불러와지기 떄문에 이 부분이 틀림
-rev(c(13, 15, 20, 32)) 역순으로 변경한다. [1] 32 20 15 13
-이 과정을 하나의 코드로 작성하면 아래의 코드가 나옴
-rev(Fruits$Profit[order(Fruits$Profit)])
-또는 rev의 위치를 변경할 수 있다.
-Fruits$Profit[rev(order(Fruits$Profit))]
+Fruits[rev(order(Fruits$Profit)),] 큰것부터 작은값이면 이게 맞지 않나..
 
-sort() 정렬를 사용하면 아래와 같이 간단하게 변경도 가능
-rev(sort(Fruits$Profit))
+답: Fruits[order(Fruits$Profit),]
 
 #날짜형 데이터가 아래와 같이 나오도록 포맷을 지정하였다.
 #> as.Date("12012019",  format=”%y%m%d” ) 
 #[1] "2019-12-01"
 년월일 %Y%m%d, 4자리 년도는 대문자 Y로 사용 24년도 같은 2자리 년도는 소문자 y
-as.Date("12012019", format="%m%d%Y")
+답: as.Date("12012019", format="%m%d%Y")
 
 
 #Fruits데이터 프레임에서 Fruit, Locationa별로 Sales의 최대값을 구하고자 한다.
 #aggregate(Sales~cbind(Fruit, Location),Fruits, max)
-aggregate(Sales~Fruit+Location, Fruits, max)
+답: aggregate(Sales~Fruit+Location, Fruits, max)
 
 
 #[결과 작성하기] 3점, 콘솔창에 나오는 그대로 쓸것 ([1] 이런것 포함)
@@ -49,15 +53,19 @@ aggregate(Sales~Fruit+Location, Fruits, max)
 #[2,]    4    5    6
 #> apply(mat1,2,sum)
 mat1에서 각 열(세로)의 합계, 2가 아니라 1이면 행(가로)의 합계
-[1] 5 7 9
+답: [1] 5 7 9
 
 #다음의 결과를 쓰시오.
 #>lapply(Fruits[4:6], max)
+lapply는 apply와 다르게 열, 행 기준인지 정하지 않고 자동으로 열 기준으로 작동 또한 list 형태로 반환
 Fruits의 4, 5, 6번 열의 최대값, $헤더 형태도 나오는 것을 주의
+답: 
 $Sales
 [1] 111
+
 $Expenses
 [1] 81
+
 $Profit
 [1] 32
 
@@ -80,26 +88,61 @@ $Profit
 #박용택	중견수	LG	125	476	79
 
 #내장 함수를 사용하여 baseball 데이터프레임에서 팀 별로 경기와 득점 합(변수별로 각각)을 각각 구하시오. 코드는 하나로 쓸것 (두개쓰면 틀림)
-aggregate(경기+득점~팀, baseball, sum)
-또는
-aggregate(baseball, 경기+득점~팀, sum)
+list(baseball$팀)
+[[1]]
+[1] 한화 넥센 SK 삼성 롯데 LG 삼성 KIA SK LG
+Levels: 한화 넥센 SK 삼성 롯데 LG KIA
+baseball[c("경기","득점")]
+ 경기	득점
+1 101  41
+2 128  91
+3 120  75
+4 117  61
+5 128  83
+6 121  64
+7 113  66
+8 125  57
+9 110  56
+10 125  79
+답: aggregate(baseball[c("경기","득점")],list(baseball$팀), sum)
+Group.1 경기 득점
+1  한화  101   41
+2  넥센  128   91
+3   SK   238  141
+4  삼성  230  127
+5  롯데  128   83
+6   LG   246  143
+7  KIA   125   56
 
 #내장 함수를 사용하여 위의 baseball 데이터에서 경기 수가 120이상인 행만 추출하시오
-subset(baseball, 경기>=120)
+답: subset(baseball, 경기>=120)
 
 #baseball 데이터에서 포지션이 1루수인 선수들의 이름을 추출하는 코드를 작성하시오
 subset(baseball, 포지션=="1루수")로 1루수인 데이터만 불러오고 $선수명으로 선수의 이름만 불러온다.
+
+답: subset(baseball,포지션=="1루수")[c("선수명")]
+  선수명
+1 김태균
+2 박병호
+3 박정권
+
+결과의 데이터타입이 다를 뿐 문제에서 제시하는 조건을 만족하기 때문에 아래 코드로 정답 가능성 있음
 subset(baseball, 포지션=="1루수")$선수명
+[1] 김태균 박병호 박정권
+Levels: 김태균 박병호 박정권
 
 #위의 baseball 데이터에 득점이 60점 이상인지의 여부에 따라 80점 이상이면 good, 60점 이상이면 fair의 값을 , 60점 미만이면 bad를 가지는 type변수를 추가하시오. 
-함수?
-작성중...
+답: baseball$type<-ifelse(baseball$득점>=60,”good”,ifelse(baseball$득점>”fair”,”bad”))
 
 
 
 
 #사용자에게 임의의 세 수를 입력으로 받아서 가장 큰 값을 반환하는 함수를 만드시오
-입력함수는 수업내용에 X
+답:
+myf1 <- function(x,y,z){
+  return(max(x,y,z))
+}
+
 
 #no, name, price, qty 벡터를 이용하여 아래와 같은 sales 데이터 프레임을 생성하시오.
 #> no <- c(1,2,3,4)
@@ -107,7 +150,10 @@ subset(baseball, 포지션=="1루수")$선수명
 #> price <- c(500,200,100,50)
 #> qty <- c(5,2,4,7)
 출력에서 헤더가 대문자이므로 대문자로 나오도록 하기
-data.frame(NO=no, NAME=name, PRICE=price, QTY=qty)
+답: data.frame(NO=no, NAME=name, PRICE=price, QTY=qty)
+
+만약 대문자가 아닌 no name price qty가 그대로 나왔다면
+data.frame(no, name, price, qty)로 작성 가능
 #> sales
 #  NO   NAME PRICE QTY
 #1  1  Apple   500   5
@@ -124,11 +170,12 @@ data.frame(NO=no, NAME=name, PRICE=price, QTY=qty)
 #다음의 테이블(데이터프레임명 : sample_data)
 sample_data[,-1] 첫번째 열(세로)만 제외
 apply(데이터, 2, mean) 각 열의 평균, 2이면 열(세로) 1이면 행(가로)
-apply(sample_data[,-1], 2, mean)
+답: apply(sample_data[,-1], 2, mean)
+
 
 #다음과 같이 연령별 평균 최대실업률을 구하는 코드를 작성하시오. 
 #> [1] 7.4500 3.1625 2.4875 2.4250 1.2625
-작성중...
+답: 없음
 
 
 
@@ -140,6 +187,8 @@ merge()는 둘 다 존재하는 데이터만 합치고 all=T 옵션으로 모든
 해당 문제에서는 NA값이 안보이기 떄문에 all=T 옵션을 사용할 필요가 없음
 merge(math, english)
 
+답: merge(english,math, by.x="ID",by.y="ID")
+
 
 
 
@@ -150,30 +199,14 @@ merge(math, english)
 #[1] 1 3 5 7 9
 #3 __________ var7
 해당 부분 배운적이 있나...? 파이썬이면 in...
-작성중...
+답: 3 %in% var7
 #[1] TRUE
 
 #작업폴더를 c:\temp로 설정하려고 한다.
 #setwd(_______________)
 문자형만 받으므로 ""로 문자형으로 넣을 것
-setwd("c:/temp")
-
-#아래의 fruits_long.csv 파일을 R로 불어오고자 한다.
-#a<-___________________(fruits_long.csv)
-a <- read.csv(fruits_long.csv)
-#4.png 참고
-
-#sales(17번) 테이블에서 name 변수값이 Apple인 데이터만 추출하려고한다.
-#>_____________(sales,NAME_________”Apple”)
-사진 상에서는 NAME이 아니라 name이 맞음
-subset(sales, name=="Apple")
-
-#NA를 제외하고, x의 평균을 구하고자 한다..
-#> x <- c(2,NA,4)
-#> mean(x)
-#[1] NA
-#> mean(x,   ____________ =TRUE)
-작성중...
+/와 \\ 주의
+se음
 #[1] 3
 
 #Data라는 변수에 2015년 1월 1일부터 2015년 1월 31일까지 1씩 증가하는 날짜를 입력하는 방법을 쓰세요.
@@ -182,3 +215,5 @@ seq() 반복데이터 as.Date() 날짜형 데이터로 변환
 data <- seq(from=as.Date("2015-01-01"), to=as.Date("2015-01-31"), by="day")
 또는
 data <- seq(from=as.Date("2015-01-01"), to=as.Date("2015-01-31"), by=1)
+
+답: data <- seq(as.Date("2015-01-01", "2015-01-31")) #오류 나는데 이거 맞나
