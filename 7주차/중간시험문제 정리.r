@@ -138,10 +138,16 @@ Levels: 김태균 박병호 박정권
 
 
 #16. 사용자에게 임의의 세 수를 입력으로 받아서 가장 큰 값을 반환하는 함수를 만드시오
-답:
 myf1 <- function(x,y,z){
   return(max(x,y,z))
 }
+
+답:
+myf1<-function(x,y,z){
+  a <- max(x,y,z)
+  return(a)
+}
+
 
 
 #17. no, name, price, qty 벡터를 이용하여 아래와 같은 sales 데이터 프레임을 생성하시오.
