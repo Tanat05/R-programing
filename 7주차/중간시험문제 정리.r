@@ -220,6 +220,7 @@ setwd("c:/temp")
 답: a<-read.csv("fruits_long.csv")
 
 #24. sales 테이블에서 name 변수값이 Apple인 데이터만 추출하려고한다.
+#4.png 참고
 #>_____________(sales,name_________”Apple”)
 답: subset(sales, name=="Apple")
 
