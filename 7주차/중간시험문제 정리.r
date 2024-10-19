@@ -21,7 +21,7 @@
 #>aggregate(Fruits, Sales~Fruit, max)
 고칠 부분이 없음
 Fruits와 Sales~Fruit는 위치를 서로 변경해도 문제가 없지만 max의 위치는 변경하면 안됨
-답: aggregate(Sales~Fruit, Fruits, max)
+답: aggregate(Sales~Fruit, Fruits, max #교수님 마지막 ) 어디갔나요 그리고 원래 코드로 정상작동합니다.
 
 
 
@@ -175,7 +175,7 @@ apply(데이터, 2, mean) 각 열의 평균, 2이면 열(세로) 1이면 행(가
 
 #다음과 같이 연령별 평균 최대실업률을 구하는 코드를 작성하시오. 
 #> [1] 7.4500 3.1625 2.4875 2.4250 1.2625
-답: 없음
+답: 없음 #교수님 안배워서 답이 없는 건가요 아님 진짜 답이 없는 건가요
 
 
 
