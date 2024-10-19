@@ -221,6 +221,7 @@ myf1<-function(x,y,z){
 #> price <- c(500,200,100,50)
 #> qty <- c(5,2,4,7)
 출력에서 헤더가 대문자이므로 대문자로 나오도록 하기
+
 답: data.frame(NO=no, NAME=name, PRICE=price, QTY=qty)
 
 만약 대문자가 아닌 no name price qty가 그대로 나왔다면
