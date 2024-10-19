@@ -49,15 +49,23 @@ my_array <- array(1:8, dim = c(2, 2, 2))
 
 #5. Fruits 데이터에서 과일 종류별 최대 판매량(Sales)을 구하는 코드
 #>aggregate(Fruits, Sales~Fruit, max)
+aggregate(x, by, FUN) 데이터를 요약(summary)할 때 사용하는 함수
+x: 집계할 데이터 (보통 숫자형 벡터나 데이터 프레임)
+by: 데이터를 그룹화할 기준 (보통 데이터 프레임의 열 또는 리스트)
+FUN: 데이터를 요약할 함수 (예: mean, sum, min, max 등)
 고칠 부분이 없음
 Fruits와 Sales~Fruit는 위치를 서로 변경해도 문제가 없음 max의 위치는 변경되면 안됨
+
 답: aggregate(Sales~Fruit, Fruits, max) #교수님 원래 코드로 정상작동합니다.
 
 
 
 #6. Fruits 데이터에서 이익의 역순으로 (이익갑이 큰것부터 작은것까지) 데이터를 정렬
 #> Fruits[order(Fruits$Profit)]
-rev() 역순 order() 정렬했을때 위치값
+rev(x) 역순 
+x: 역순으로 만들 벡터, 리스트 또는 다른 1차원 객체
+order(x) 정렬했을때 위치값
+x: 정렬할 벡터
 order("c", "b", "d", "f", "e", "a")
 정렬하면 a가 1번째로 오고 원래 있던 자리가 6번째로 6으로 나옴 b가 2번째이고 원래 2번째에 있으므로 2
 [1] 6 2 1 3 5 4
@@ -68,7 +76,11 @@ Fruits[rev(order(Fruits$Profit)),] 큰것부터 작은값이면 이게 맞지 �
 #7. 날짜형 데이터가 아래와 같이 나오도록 포맷을 지정하였다.
 #> as.Date("12012019",  format=”%y%m%d” ) 
 #[1] "2019-12-01"
+as.Date(x, format = "%Y-%m-%d") 날짜형 데이터로 변환
+x: 변환할 객체 (문자형, 팩터, 숫자 등)
+format: 날짜 형식을 지정하는 문자열 기본값은 "yyyy-mm-dd" 형식
 년월일 %Y%m%d, 4자리 년도는 대문자 Y로 사용 24년도 같은 2자리 년도는 소문자 y
+
 답: as.Date("12012019", format="%m%d%Y")
 
 
@@ -85,13 +97,22 @@ Fruits[rev(order(Fruits$Profit)),] 큰것부터 작은값이면 이게 맞지 �
 #[1,]    1    2    3
 #[2,]    4    5    6
 #> apply(mat1,2,sum)
-mat1에서 각 열(세로)의 합계, 2가 아니라 1이면 행(가로)의 합계
+apply(x, MARGIN, FUN) 배열(array)이나 행렬(matrix)과 같은 2차원 구조에 대해 함수를 적용할 때 사용하는 함수
+x: 배열이나 행렬
+MARGIN: 함수를 적용할 방향을 지정
+	1이면 행(row) 방향으로 함수를 적용
+	2이면 열(column) 방향으로 함수를 적용
+FUN: 적용할 함수
+
 답: [1] 5 7 9
 
 #11. 다음의 결과를 쓰시오.
 #>lapply(Fruits[4:6], max)
-lapply는 apply와 다르게 열, 행 기준인지 정하지 않고 자동으로 열 기준으로 작동 또한 list 형태로 반환
+lapply(x, FUN) 리스트나 벡터와 같은 1차원 데이터 구조에 함수를 적용하고, 그 결과를 리스트로 반환하는 데 사용되는 함수
+x: 함수가 적용될 리스트나 벡터
+FUN: 각 요소에 적용할 함수(예: mean, sum, min, max 등)
 Fruits의 4, 5, 6번 열의 최대값, $헤더 형태도 나오는 것을 주의
+
 답: 
 $Sales
 [1] 111
@@ -152,7 +173,10 @@ Group.1 경기 득점
 7  KIA   125   56
 
 #13. 내장 함수를 사용하여 위의 baseball 데이터에서 경기 수가 120이상인 행만 추출하시오
-subset() 조건을 만족하는 데이터만 추출
+subset(x, subset) 조건을 만족하는 데이터만 추출
+x: 데이터 프레임이나 벡터
+subset: 선택할 조건을 정의하는 논리 표현식 TRUE인 행이나 요소만 선택된다
+
 답: subset(baseball, 경기>=120)
 
 #14. baseball 데이터에서 포지션이 1루수인 선수들의 이름을 추출하는 코드를 작성하시오
@@ -252,6 +276,7 @@ merge(math, math)
 #var7
 #[1] 1 3 5 7 9
 #3 __________ var7
+%in% 특정 값이 벡터나 리스트에 포함되어 있는지 여부를 확인하는 데 사용되는 논리 연산자
 답: 3 %in% var7
 #[1] TRUE
 
