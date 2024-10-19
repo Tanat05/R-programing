@@ -2,7 +2,7 @@
 #1. length() 함수는 데이터의 변수 수를 세는 함수이다.
 답: O
 #2. R에서 데이터 저장의 가장 작은 구조는 요소형이다.
-AI는 O라는데;;
+AI는 O라는데;; #교수님 호출!
 답: X
 #3. 값의 수준이 몇 개로 한정되어 있는 데이터 타입을 팩터형이라고 한다.
 팩터형(Factor) 데이터는 값이 한정된 범주(수준, levels)로만 이루어진 데이터 타입
@@ -33,6 +33,7 @@ my_dataframe <- data.frame(
 my_array <- array(1:8, dim = c(2, 2, 2))
 
 답: O
+
 
 
 
@@ -100,6 +101,8 @@ $Expenses
 
 $Profit
 [1] 32
+
+
 
 
 
@@ -238,6 +241,7 @@ merge(math, math)
 						 
 
 답: merge(english, math, by.x="ID", by.y="ID")
+
 
 
 
