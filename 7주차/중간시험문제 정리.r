@@ -32,12 +32,12 @@ rev(sort(Fruits$Profit))
 #> as.Date("12012019",  format=”%y%m%d” ) 
 #[1] "2019-12-01"
 년월일 %Y%m%d, 4자리 년도는 대문자 Y로 사용 24년도 같은 2자리 년도는 소문자 y
-as.Date("12012019",  format="%d%m%Y")
-#[1] "2019-01-12"
+as.Date("12012019", format="%m%d%Y")
+
 
 #Fruits데이터 프레임에서 Fruit, Locationa별로 Sales의 최대값을 구하고자 한다.
 #aggregate(Sales~cbind(Fruit, Location),Fruits, max)
-aggregate(Sales~Fruit+Location,Fruits, max)
+aggregate(Sales~Fruit+Location, Fruits, max)
 
 
 #[결과 작성하기] 3점, 콘솔창에 나오는 그대로 쓸것 ([1] 이런것 포함)
@@ -88,8 +88,8 @@ aggregate(baseball, 경기+득점~팀, sum)
 subset(baseball, 경기>=120)
 
 #baseball 데이터에서 포지션이 1루수인 선수들의 이름을 추출하는 코드를 작성하시오
-subset(baseball,포지션=="1루수")로 1루수인 데이터만 불러오고 $선수명으로 선수의 이름만 불러온다.
-subset(baseball,포지션=="1루수")$선수명
+subset(baseball, 포지션=="1루수")로 1루수인 데이터만 불러오고 $선수명으로 선수의 이름만 불러온다.
+subset(baseball, 포지션=="1루수")$선수명
 
 #위의 baseball 데이터에 득점이 60점 이상인지의 여부에 따라 80점 이상이면 good, 60점 이상이면 fair의 값을 , 60점 미만이면 bad를 가지는 type변수를 추가하시오. 
 함수?
@@ -136,7 +136,7 @@ apply(sample_data[,-1], 2, mean)
 #다음의 두 테이블을 ID를 기준으로 일치하는 행을 기준으로 두 테이블을 결합하는 코드를 작성하시오. 
 #결합 결과는 오른쪽 테이블임
 #2.png 참고 오른쪽 테이블은 3.png 참고
-merge()는 둘 다 존재하는 데이터만 합치고 all=T 옵션으로 모든 데이터를 보존하고 NA값을 추가한다.
+merge()는 둘 다 존재하는 데이터만 합치고 all=T 옵션으로 모든 데이터를 보존하고 값이 없는 부분에 NA값을 추가한다.
 해당 문제에서는 NA값이 안보이기 떄문에 all=T 옵션을 사용할 필요가 없음
 merge(math, english)
 
@@ -156,7 +156,7 @@ merge(math, english)
 #작업폴더를 c:\temp로 설정하려고 한다.
 #setwd(_______________)
 문자형만 받으므로 ""로 문자형으로 넣을 것
-setwd("c:\temp")
+setwd("c:/temp")
 
 #아래의 fruits_long.csv 파일을 R로 불어오고자 한다.
 #a<-___________________(fruits_long.csv)
