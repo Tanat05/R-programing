@@ -2,8 +2,11 @@
 #1. length() 함수는 데이터의 변수 수를 세는 함수이다.
 답: O
 #2. R에서 데이터 저장의 가장 작은 구조는 요소형이다.
+AI는 O라는데;;
 답: X
 #3. 값의 수준이 몇 개로 한정되어 있는 데이터 타입을 팩터형이라고 한다.
+팩터형(Factor) 데이터는 값이 한정된 범주(수준, levels)로만 이루어진 데이터 타입
+주로 범주형 데이터(categorical data)를 표현하는 데 사용
 답: O
 #4. 요소의 데이터 타입이 서로 다르고 2차원으로 구성된 데이터 구조를 데이터프레임이라고 한다.
 1차원: 벡터(전부 같은 타입), 리스트(서로 다른 데이터 타입)
@@ -46,7 +49,7 @@ my_array <- array(1:8, dim = c(2, 2, 2))
 #5. Fruits 데이터에서 과일 종류별 최대 판매량(Sales)을 구하는 코드
 #>aggregate(Fruits, Sales~Fruit, max)
 고칠 부분이 없음
-Fruits와 Sales~Fruit는 위치를 서로 변경해도 문제가 없지만 max의 위치는 변경하면 안됨
+Fruits와 Sales~Fruit는 위치를 서로 변경해도 문제가 없음 max의 위치는 변경되면 안됨
 답: aggregate(Sales~Fruit, Fruits, max #교수님 마지막 ) 어디갔나요 그리고 원래 코드로 정상작동합니다.
 
 
@@ -56,7 +59,7 @@ Fruits와 Sales~Fruit는 위치를 서로 변경해도 문제가 없지만 max�
 rev() 역순 order() 정렬했을때 위치값
 Fruits[rev(order(Fruits$Profit)),] 큰것부터 작은값이면 이게 맞지 않나..
 
-답: Fruits[order(Fruits$Profit),]
+답: Fruits[order(Fruits$Profit),] #교수님 역순이 아니예요
 
 #7. 날짜형 데이터가 아래와 같이 나오도록 포맷을 지정하였다.
 #> as.Date("12012019",  format=”%y%m%d” ) 
