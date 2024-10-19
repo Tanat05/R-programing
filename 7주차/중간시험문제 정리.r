@@ -318,3 +318,19 @@ data <- seq(from=as.Date("2015-01-01"), to=as.Date("2015-01-31"), by="day")
 data <- seq(from=as.Date("2015-01-01"), to=as.Date("2015-01-31"), by=1)
 
 답: data <- seq(as.Date(“2015-01-01”, “2015-01-31”)) #교수님 이거 오류나요
+
+
+#알아 두면 좋은 내용
+cat() = c()
+
+NA : 잘못된 값이 들어 올 경우나 값이 없는 경우( Not Applicable , Not Available )
+NULL : 값이 들어갈 공간이 없는 경우
+c(1, NA, 2)
+#[1] 1 NA 2
+c(1,NULL,2)
+#[1] 1 2
+
+class(x) 객체의 클래스를 확인하는 데 사용되는 함수
+x: 클래스를 확인하고자 하는 객체
+
+...
