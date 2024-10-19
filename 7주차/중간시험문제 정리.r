@@ -10,7 +10,7 @@ AI는 O라는데;;
 답: O
 #4. 요소의 데이터 타입이 서로 다르고 2차원으로 구성된 데이터 구조를 데이터프레임이라고 한다.
 1차원: 벡터(전부 같은 타입), 리스트(서로 다른 데이터 타입)
-2차원: 행렬(전부 같은 타입), 데이터 타입(서로 다른 데이터 타입)
+2차원: 행렬(전부 같은 타입), 데이터프레임임(서로 다른 데이터 타입)
 N차원: 배열
 
 #1차원
@@ -50,13 +50,16 @@ my_array <- array(1:8, dim = c(2, 2, 2))
 #>aggregate(Fruits, Sales~Fruit, max)
 고칠 부분이 없음
 Fruits와 Sales~Fruit는 위치를 서로 변경해도 문제가 없음 max의 위치는 변경되면 안됨
-답: aggregate(Sales~Fruit, Fruits, max #교수님 마지막 ) 어디갔나요 그리고 원래 코드로 정상작동합니다.
+답: aggregate(Sales~Fruit, Fruits, max) #교수님 원래 코드로 정상작동합니다.
 
 
 
 #6. Fruits 데이터에서 이익의 역순으로 (이익갑이 큰것부터 작은것까지) 데이터를 정렬
 #> Fruits[order(Fruits$Profit)]
 rev() 역순 order() 정렬했을때 위치값
+order("c", "b", "d", "f", "e", "a")
+정렬하면 a가 1번째로 오고 원래 있던 자리가 6번째로 6으로 나옴 b가 2번째이고 원래 2번째에 있으므로 2
+[1] 6 2 1 3 5 4
 Fruits[rev(order(Fruits$Profit)),] 큰것부터 작은값이면 이게 맞지 않나..
 
 답: Fruits[order(Fruits$Profit),] #교수님 역순이 아니예요
@@ -146,10 +149,11 @@ Group.1 경기 득점
 7  KIA   125   56
 
 #13. 내장 함수를 사용하여 위의 baseball 데이터에서 경기 수가 120이상인 행만 추출하시오
+subset() 조건을 만족하는 데이터만 추출
 답: subset(baseball, 경기>=120)
 
 #14. baseball 데이터에서 포지션이 1루수인 선수들의 이름을 추출하는 코드를 작성하시오
-subset(baseball, 포지션=="1루수")로 1루수인 데이터만 불러오고 $선수명으로 선수의 이름만 불러온다.
+subset(baseball, 포지션=="1루수")로 1루수인 데이터만 불러오고 [c("선수명")]으로 선수의 이름만 불러온다.
 
 답: subset(baseball,포지션=="1루수")[c("선수명")]
   선수명
@@ -157,13 +161,16 @@ subset(baseball, 포지션=="1루수")로 1루수인 데이터만 불러오고 $
 2 박병호
 3 박정권
 
-결과의 데이터타입이 다를 뿐 문제에서 제시하는 조건을 만족하기 때문에 아래 코드로 정답 가능성 있음
+아래 코드도 문제에서 제시하는 조건을 만족하기 때문에 정답 가능성 있음
+원래 정답은 데이터프레임 아래는 리스트 형태로 반환
 subset(baseball, 포지션=="1루수")$선수명
 [1] 김태균 박병호 박정권
 Levels: 김태균 박병호 박정권
 
 #15. 위의 baseball 데이터에 득점이 60점 이상인지의 여부에 따라 80점 이상이면 good, 60점 이상이면 fair의 값을 , 60점 미만이면 bad를 가지는 type변수를 추가하시오. 
-답: baseball$type<-ifelse(baseball$득점>=60,”good”,ifelse(baseball$득점>”fair”,”bad”))
+baseball$type <- ifelse(baseball$득점>=80, "good", ifelse(baseball$득점>=60, "fair", "bad"))
+
+답: baseball$type<-ifelse(baseball$득점>=60,"good",ifelse(baseball$득점>"fair","bad")) #교수님 그냥 코드 자체가 문제예요
 
 
 
@@ -224,9 +231,13 @@ apply(데이터, 2, mean) 각 열의 평균, 2이면 열(세로) 1이면 행(가
 #2.png 참고 오른쪽 테이블은 3.png 참고
 merge()는 둘 다 존재하는 데이터만 합치고 all=T 옵션으로 모든 데이터를 보존하고 값이 없는 부분에 NA값을 추가한다.
 해당 문제에서는 NA값이 안보이기 떄문에 all=T 옵션을 사용할 필요가 없음
-merge(math, english)
+by.x와 by.y는 병합할 때 사용할 각 데이터 프레임의 열(column)을 지정하는 인수
+by.x는 첫번째(english)에서 병합할 열이름
+by.y는 첫번째(english)에서 병합할 열이름
+merge(math, math)
+						 
 
-답: merge(english,math, by.x="ID",by.y="ID")
+답: merge(english, math, by.x="ID", by.y="ID")
 
 
 
@@ -237,7 +248,6 @@ merge(math, english)
 #var7
 #[1] 1 3 5 7 9
 #3 __________ var7
-해당 부분 배운적이 있나...? 파이썬이면 in...
 답: 3 %in% var7
 #[1] TRUE
 
@@ -249,7 +259,7 @@ setwd("c:\\temp")
 또는
 setwd("c:/temp")
 
-답: setwd(c:\\r_temp) 또는 setwd(c:/r_temp)
+답: setwd(c:\\r_temp) 또는 setwd(c:/r_temp) #교수님 ""어디갔나요?
 
 #23. 아래와 같이 데이터를 R로 불어오고자한다.
 #a<-_____________(fruits_long.csv)
