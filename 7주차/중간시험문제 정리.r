@@ -286,11 +286,7 @@ merge(math, math)
 #setwd(_______________)
 문자형만 받으므로 ""로 문자형으로 넣을 것
 /와 \\ 주의
-setwd("c:\\temp")
-또는
-setwd("c:/temp")
-
-답: setwd(c:\\r_temp) 또는 setwd(c:/r_temp) #교수님 ""어디갔나요?
+답: setwd("c:\\temp") 또는 setwd("c:/temp")
 
 #23. 아래와 같이 데이터를 R로 불어오고자한다.
 #a<-_____________(fruits_long.csv)
@@ -318,7 +314,9 @@ data <- seq(from=as.Date("2015-01-01"), to=as.Date("2015-01-31"), by="day")
 또는
 data <- seq(from=as.Date("2015-01-01"), to=as.Date("2015-01-31"), by=1)
 
-답: data <- seq(as.Date(“2015-01-01”, “2015-01-31”)) #교수님 이거 오류나요
+data <- seq(as.Date("2015-01-01", "2015-01-31"), by=1)
+
+답: data <- seq(as.Date("2015-01-01", "2015-01-31")) #교수님 이거 오류나요
 
 
 #알아 두면 좋은 내용
