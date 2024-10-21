@@ -71,7 +71,7 @@ order("c", "b", "d", "f", "e", "a")
 [1] 6 2 1 3 5 4
 Fruits[rev(order(Fruits$Profit)),] 큰것부터 작은값이면 이게 맞지 않나..
 
-답: Fruits[order(Fruits$Profit),] #교수님 역순이 아니예요
+답: Fruits[order(-Fruits$Profit), ] #수정
 
 #7. 날짜형 데이터가 아래와 같이 나오도록 포맷을 지정하였다.
 #> as.Date("12012019",  format=”%y%m%d” ) 
