@@ -18,9 +18,9 @@ N차원: 배열
 vec_numeric <- c(1, 2, 3, 4, 5)
  문자형 벡터
 vec_char <- c("a", "b", "c")
-2차원
  숫자형, 문자형, 논리형 값들을 포함한 리스트
 my_list <- list(1, "hello", TRUE)
+2차원
  숫자형 행렬
 my_matrix <- matrix(1:6, nrow=2, ncol=3)
  숫자형과 문자형 벡터로 구성된 데이터프레임
