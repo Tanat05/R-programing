@@ -14,4 +14,5 @@ table_result["Oranges", "East"]
 d_table <- as.data.frame(table_result)
 d_table
 
+#연습문제
 subset(d_table, Freq>0)
