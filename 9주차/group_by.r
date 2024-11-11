@@ -1,28 +1,23 @@
-setwd("C:/rtemp")
-orders <- read.csv("orders.csv")
-products <- read.csv("products.csv")
-order_products <- read.csv("order_products_prior.csv")
+data1 %>%
+  group_by(팀) %>%
+  summarise(avg=mean(경기, na.rm=TRUE))
 
-install.packages("knitr")
-library(knitr)
-kable(head(oders, 20))
+data1 %>%
+  group_by(팀) %>%
+  summarise_each(funs(mean), 경기, 타수)
+#오류 나면 아래 코드로
+data1 %>%
+  group_by(팀) %>%
+  summarise(across(c(경기, 타수), mean))
 
-install.packages("dplyr")
-library(dplyr)
-orders %>%
-  group_by(oder_dow) %>%
-  summarise(count=n())
+data1 %>%
+  group_by(팀) %>%
+  summarise_each(funs(mean, n()), 경기, 타수)
+#오류 나면 아래 코드로
+data1 %>%
+  group_by(팀) %>%
+  summarise(across(c(경기, 타수), list(mean=~mean(.), n=~n())))
 
-install.packages("ggplot2")
-library(ggplot2)
-orders %>%
-  ggplot(aes(x=order_dow)) + geom_histogram(stat="count", fill="red")
-
-order %>%
-  ggplot(aes(x=days_since_prior_order)) +
-  geom_histogram(stat="count", fill="red")
-
-order_products %>%
-  group_by(order_id) %>%
-  summarize(n_items = last(add_to_cart_order))
-
+Fruits %>%
+  group_by(Fruit) %>%
+  summarise_if(is.numeric, mean)
