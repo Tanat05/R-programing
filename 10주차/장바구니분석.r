@@ -1,7 +1,7 @@
 setwd("C:/rtemp")
 orders <- read.csv("orders.csv")
 products <- read.csv("products.csv")
-order_products <- read.csv("order_products_prior.csv")
+order_products <- read.csv("order_products__prior.csv")
 
 
 install.packages("knitr")
@@ -12,7 +12,7 @@ kable(head(orders, 20))
 install.packages("dplyr")
 library(dplyr)
 orders %>%
-  group_by(order_dow) %>%
+  group_by(oder_dow) %>%
   summarise(count=n())
 
 
@@ -21,8 +21,7 @@ library(ggplot2)
 orders %>%
   ggplot(aes(x=order_dow)) + geom_histogram(stat="count", fill="red")
 order %>%
-  ggplot(aes(x=days_since_prior_order)) +
-  geom_histogram(stat="count", fill="red")
+  ggplot(aes(x=days_since_prior_order)) + geom_histogram(stat="count", fill="red")
 
 
 order_products %>%
@@ -66,3 +65,9 @@ aislse <- read.csv("aisles.csv")
 tmp <- tmp %>%
   left_join(aisles, by="aisle_id")
 tmp
+
+
+install.packages("treemap")
+library(treemap)
+
+treemap(tmp, index=c("department", "aisle_id"), vSize="n", vColor="department")
