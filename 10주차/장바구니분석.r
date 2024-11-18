@@ -34,7 +34,7 @@ order_products %>%
 
 order_products %>%
   group_by(order_id) %>%
-  summaruze(n_items = last(add_to_cart_order)) %>%
+  summarize(n_items = last(add_to_cart_order)) %>%
   ggplot(aes(x=n_itmes)) + geom_histogram(stat="count", fill="red")
 
 
