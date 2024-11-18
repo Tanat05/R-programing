@@ -70,5 +70,5 @@ tmp
 install.packages("treemap")
 library(treemap)
 
-treemap(tmp, index=c("department", "aisle"), vSize="n", vColor="department")
+treemap(tmp, index=c("department", "aisle_id"), vSize="n", vColor="department")
 
