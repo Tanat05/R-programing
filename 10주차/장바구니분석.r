@@ -48,7 +48,7 @@ order_products %>%
   group_by(product_id) %>%
   summarize(count=n()) %>%
   top_n(10, wt=count) %>%
-  merge(subset(products, selsct=c("product_id", "product_name"))) %>%
+  merge(subset(products, select=c("product_id", "product_name"))) %>%
   arrange(desc(count))
 
 tmp <- products %>%
