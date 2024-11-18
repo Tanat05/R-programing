@@ -20,7 +20,7 @@ install.packages("ggplot2")
 library(ggplot2)
 orders %>%
   ggplot(aes(x=order_dow)) + geom_histogram(stat="count", fill="red")
-order %>%
+orders %>%
   ggplot(aes(x=days_since_prior_order)) + geom_histogram(stat="count", fill="red")
 
 
@@ -70,4 +70,5 @@ tmp
 install.packages("treemap")
 library(treemap)
 
-treemap(tmp, index=c("department", "aisle_id"), vSize="n", vColor="department")
+treemap(tmp, index=c("department", "aisle"), vSize="n", vColor="department")
+
