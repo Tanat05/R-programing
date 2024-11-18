@@ -6,13 +6,13 @@ order_products <- read.csv("order_products_prior.csv")
 
 install.packages("knitr")
 library(knitr)
-kable(head(oders, 20))
+kable(head(orders, 20))
 
 
 install.packages("dplyr")
 library(dplyr)
 orders %>%
-  group_by(oder_dow) %>%
+  group_by(order_dow) %>%
   summarise(count=n())
 
 
