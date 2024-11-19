@@ -37,6 +37,11 @@ order_products %>%
   summarize(n_items = last(add_to_cart_order)) %>%
   ggplot(aes(x=n_items)) + geom_histogram(stat="count", fill="red")
 
+#그래프를 표로
+order_products %>%
+  group_by(order_id) %>%
+  summarize(n_items = last(add_to_cart_order))
+
 
 tmp <- order_products %>%
   group_by(product_id) %>%
