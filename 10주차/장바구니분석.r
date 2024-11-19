@@ -12,7 +12,7 @@ kable(head(orders, 20))
 install.packages("dplyr")
 library(dplyr)
 orders %>%
-  group_by(oder_dow) %>%
+  group_by(order_dow) %>%
   summarise(count=n())
 
 
@@ -71,4 +71,3 @@ install.packages("treemap")
 library(treemap)
 
 treemap(tmp, index=c("department", "aisle_id"), vSize="n", vColor="department")
-
