@@ -84,3 +84,59 @@ install.packages("treemap")
 library(treemap)
 
 treemap(tmp, index=c("department", "aisle_id"), vSize="n", vColor="department")
+
+orders %>%
+  group_by(user_id) %>%
+  mutate(max=max(row_number())) %>%
+  subset(max==order_number) %>%
+  subset(select=-max)
+
+
+  count(order_number) %>%
+  ungroup() %>%
+  count(order_number)
+
+a <- orders %>%
+  group_by(user_id) %>%
+  mutate(max=max(row_number())) %>%
+  subset(max==order_number) %>%
+  subset(select=-max) %>%
+  ungroup() %>%
+  count(order_number)
+a
+
+#잘못됨
+orders %>%
+  group_by(user_id) %>%
+  subset(order_number==max(order_number)) %>%
+  ungroup() %>%
+  count(order_number)
+
+a %>% ggplot(aes(order_number, n)) + geom_line(color="red", size=1) + geom_point(size=2, color="red")
+
+group_by(product_id)
+summarize(reordered_count=sum(reordered))
+
+summarize(reordered_count=sum(reordered), count=n())
+mutate(proportion=reordered_count/100)
+
+top_n(100, wt=count) %>%
+  top_n(10, wt=proportion)
+
+merge(subset(products, select=c("product_id", "product_name")))
+arrange(desc(proportion))
+
+tmp <- order_products %>%
+  dplyr::group_by(product_id) %>%
+  summarize(reordered_count=sum(reordered), count=n()) %>%
+  mutate(proportion=reordered_count/count*100) %>%
+  top_n(10, wt=proportion)
+  
+tmp <- order_products %>%
+  dplyr::group_by(product_id) %>%
+  summarize(reordered_count=sum(reordered), count=n()) %>%
+  mutate(proportion=reordered_count/count*100) %>%
+  top_n(100, wt=proportion) %>%
+  top_n(20, wt=proportion) %>%
+  merge(subset(products, select=c("product_id", "product_name"))) %>%
+  arrange(desc(proportion))
