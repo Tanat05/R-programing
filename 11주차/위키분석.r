@@ -57,3 +57,7 @@ wikipedia %>%
 tpages <- ???(wikipedia, wikimedia, mediawiki)
 tpages %>%
   filter(grep("north.korea", article))
+
+test <- tpages %>%
+  filter(str_detect(article, "2NE1"))
+tpages[grep("2NE1", tpages$article), ]
