@@ -39,3 +39,21 @@ wikimedia <- wikimedia %>%
   separate(bar, into=c("access", "agent"), sep="_") %>%
   add_column(locale="wikimedia")
 wikimedia
+
+wikipedia <- wikipedia %>%
+  separate(Page, into=c("foo", "bar"), sep=".wikipedia.org_")
+
+wikipedia %>%
+  separate(Page, into=c("foo", "bar"), sep=".wikipedia.org") %>%
+  separate(foo, into=c("article", "locale"), sep=-3) %>%
+  mutate(locale=str(sub(locale,2,3)))
+
+wikipedia %>%
+  separate(Page, into=c("foo", "bar"), sep=".wikipedia.org") %>%
+  separate(foo, into=c("article", "locale"), sep=-3) %>%
+  mutate(locale=str(sub(locale,2,3))) %>%
+  separate(bar, into=c("access", "agent"), sep="_")
+
+tpages <- ???(wikipedia, wikimedia, mediawiki)
+tpages %>%
+  filter(grep("north.korea", article))
