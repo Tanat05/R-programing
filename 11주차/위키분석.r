@@ -1,3 +1,4 @@
+
 setwd("C:/rtemp")
 train <- read.csv("train_2.csv")
 sum(is.na(train))
@@ -58,6 +59,15 @@ tpages <- ???(wikipedia, wikimedia, mediawiki)
 tpages %>%
   filter(grep("north.korea", article))
 
+
+install.packages("knitr")
 test <- tpages %>%
   filter(str_detect(article, "2NE1"))
 tpages[grep("2NE1", tpages$article), ]
+
+test2 <- test %>%
+  melt(id=c("article", "locale", "access", "agent"))
+
+test2 <- test2 %>%
+  mutate(date2=substing(variable, 2)) %>%
+  mutate(data3=as.Date(data2, format="&Y%m%d"))
