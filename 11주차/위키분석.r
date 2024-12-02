@@ -59,8 +59,6 @@ tpages <- ???(wikipedia, wikimedia, mediawiki)
 tpages %>%
   filter(grep("north.korea", article))
 
-
-install.packages("knitr")
 test <- tpages %>%
   filter(str_detect(article, "2NE1"))
 tpages[grep("2NE1", tpages$article), ]
@@ -71,3 +69,16 @@ test2 <- test %>%
 test2 <- test2 %>%
   mutate(date2=substing(variable, 2)) %>%
   mutate(data3=as.Date(data2, format="&Y%m%d"))
+
+test2$yr_month <- format(test2$date3, "%Y-%m")
+
+summary <- test2 %>%
+  group_by(access, yr_month) %>%
+  summarize(view=sum(value))
+
+
+summary %>%
+  ggplot(aes(yr_month, view, color=access))
+geom_line(aes(group=access))
+geom_point()
+theme(axis.text.x=element_text(angle=90, hjust=1, vjust=0.5))
