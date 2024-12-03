@@ -1,4 +1,4 @@
-setwd("c:/r_temp")
+setwd("c:/rtemp")
 train <- read.csv("train_2.csv")
 library(dplyr)
 library(stringr)
@@ -38,7 +38,6 @@ wikipedia<-wikipedia%>%
 save.image("wiki.Rdata")
 load("wiki.Rdata")
 save.image("wiki.Rdata")
-setwd("C:/r_temp")
 tpages <- rbind(wikipedia,wikimedia,mediawiki)
 
 test <- tpages %>% filter(row_number()%in%grep("north.korea",article))
@@ -68,3 +67,4 @@ summary%>%
   ggplot(aes(yr_month,view,color=access)) +
   geom_line(aes(group = access)) +
   geom_point()
+
