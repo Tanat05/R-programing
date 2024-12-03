@@ -1,4 +1,3 @@
-
 setwd("C:/rtemp")
 train <- read.csv("train_2.csv")
 sum(is.na(train))
@@ -55,7 +54,7 @@ wikipedia %>%
   mutate(locale=str(sub(locale,2,3))) %>%
   separate(bar, into=c("access", "agent"), sep="_")
 
-tpages <- ???(wikipedia, wikimedia, mediawiki)
+tpages <- cbind(wikipedia, wikimedia, mediawiki)
 tpages %>%
   filter(grep("north.korea", article))
 
@@ -82,3 +81,4 @@ summary %>%
 geom_line(aes(group=access))
 geom_point()
 theme(axis.text.x=element_text(angle=90, hjust=1, vjust=0.5))
+
